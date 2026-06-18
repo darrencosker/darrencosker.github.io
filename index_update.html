@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Darren Cosker's Home Page</title>
+        <meta name="description" content="Prof. Darren Cosker - Principal Scientist Manager at Microsoft, Professor at the University of Bath, working across multimodal AI, post-training, proactive agents, computer vision, graphics, motion, and digital humans.">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
+        <style>
+            :root {
+                --bg: #202020;
+                --surface: #2a2a2a;
+                --surface-strong: #242424;
+                --paper: #ffffff;
+                --paper-soft: #f8fbfe;
+                --paper-muted: #f3f7fa;
+                --border: #dce5ed;
+                --text: #495766;
+                --heading: #2d2d2d;
+                --muted: #728091;
+                --accent: #2980b9;
+                --accent-soft: rgba(41, 128, 185, 0.08);
+                --shadow: 0 24px 70px rgba(0, 0, 0, 0.18);
+                --radius-lg: 26px;
+                --radius-md: 20px;
+                --radius-sm: 14px;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                margin: 0;
+                min-height: 100vh;
+                background:
+                    radial-gradient(circle at top left, rgba(41, 128, 185, 0.12), transparent 26%),
+                    linear-gradient(180deg, #262626 0%, #202020 100%);
+                color: var(--text);
+                font-family: "Source Sans 3", sans-serif;
+                line-height: 1.75;
+            }
+
+            a {
+                color: var(--accent);
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            img {
+                display: block;
+                max-width: 100%;
+            }
+
+            p {
+                margin: 0 0 1.1rem;
+            }
+
+            h1,
+            h2,
+            h3 {
+                margin: 0;
+                color: var(--heading);
+                font-weight: 800;
+                line-height: 1.08;
+            }
+
+            .page-shell {
+                width: min(1240px, calc(100% - 32px));
+                margin: 32px auto;
+            }
+
+            .layout {
+                display: grid;
+                grid-template-columns: 300px minmax(0, 1fr);
+                align-items: start;
+                background: var(--surface);
+                border-radius: 30px;
+                overflow: hidden;
+                box-shadow: var(--shadow);
+            }
+
+            .sidebar {
+                background: linear-gradient(180deg, #313131 0%, var(--surface-strong) 100%);
+                color: #ffffff;
+                padding: 34px 26px;
+            }
+
+            .sidebar-inner {
+                position: sticky;
+                top: 24px;
+            }
+
+            .profile-photo {
+                margin-bottom: 22px;
+                overflow: hidden;
+                border-radius: 24px;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+            }
+
+            .profile-photo img {
+                width: 100%;
+                aspect-ratio: 203 / 345;
+                object-fit: cover;
+            }
+
+            .sidebar h1 {
+                margin-bottom: 16px;
+                color: #ffffff;
+                font-size: 2rem;
+            }
+
+            .role-list {
+                display: grid;
+                gap: 8px;
+                margin-bottom: 22px;
+            }
+
+            .role-list p,
+            .sidebar-meta p {
+                margin: 0;
+                color: rgba(255, 255, 255, 0.88);
+            }
+
+            .sidebar-meta {
+                display: grid;
+                gap: 12px;
+                margin-bottom: 24px;
+            }
+
+            .sidebar-meta a {
+                color: #ffffff;
+            }
+
+            .sidebar-link-list {
+                display: grid;
+                gap: 10px;
+                margin-bottom: 28px;
+            }
+
+            .sidebar-link {
+                display: block;
+                padding: 11px 14px;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: var(--radius-sm);
+                background: rgba(255, 255, 255, 0.05);
+                color: #ffffff;
+                font-weight: 700;
+            }
+
+            .sidebar-link:hover {
+                background: rgba(41, 128, 185, 0.22);
+                text-decoration: none;
+            }
+
+            .section-nav {
+                padding-top: 22px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .section-nav h2 {
+                margin-bottom: 12px;
+                color: rgba(255, 255, 255, 0.92);
+                font-size: 0.92rem;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+            }
+
+            .section-nav ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .section-nav a {
+                display: block;
+                margin-bottom: 8px;
+                padding: 10px 14px;
+                border-radius: 12px;
+                color: rgba(255, 255, 255, 0.82);
+                font-size: 0.95rem;
+                font-weight: 700;
+                letter-spacing: 0.02em;
+                text-transform: uppercase;
+            }
+
+            .section-nav a:hover {
+                background: rgba(255, 255, 255, 0.06);
+                color: #ffffff;
+                text-decoration: none;
+            }
+
+            .main-content {
+                background: var(--paper);
+                border-top: 6px solid var(--accent);
+                padding: 40px clamp(24px, 4vw, 56px) 56px;
+            }
+
+            .topbar {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 24px;
+                margin-bottom: 28px;
+                padding-bottom: 28px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .socials,
+            .quick-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+                align-items: center;
+            }
+
+            .socials a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 52px;
+                height: 52px;
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                background: var(--paper-muted);
+                transition: transform 0.15s ease, background-color 0.15s ease;
+            }
+
+            .socials a:hover {
+                background: var(--accent-soft);
+                text-decoration: none;
+                transform: translateY(-1px);
+            }
+
+            .socials img {
+                width: 26px;
+                height: 26px;
+                object-fit: contain;
+            }
+
+            .quick-links {
+                justify-content: flex-end;
+            }
+
+            .quick-links a {
+                padding: 10px 14px;
+                border: 1px solid var(--border);
+                border-radius: 999px;
+                background: var(--paper-muted);
+                color: var(--heading);
+                font-weight: 700;
+            }
+
+            .quick-links a:hover {
+                color: var(--accent);
+                border-color: rgba(41, 128, 185, 0.32);
+                text-decoration: none;
+            }
+
+            .hero {
+                margin-bottom: 42px;
+            }
+
+            .hero-card,
+            .card,
+            .figure-card,
+            .project-card,
+            .funding-item {
+                border: 1px solid var(--border);
+                box-shadow: 0 14px 36px rgba(31, 45, 61, 0.05);
+            }
+
+            .hero-card {
+                padding: 26px 28px;
+                border-radius: var(--radius-lg);
+                background: linear-gradient(180deg, var(--paper-soft) 0%, #ffffff 100%);
+            }
+
+            .hero-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 18px;
+            }
+
+            .tag {
+                padding: 8px 12px;
+                border-radius: 999px;
+                background: var(--accent-soft);
+                color: var(--accent);
+                font-size: 0.92rem;
+                font-weight: 800;
+            }
+
+            .section {
+                margin-top: 42px;
+            }
+
+            .section-header {
+                margin-bottom: 18px;
+            }
+
+            .section-header h2 {
+                font-size: clamp(1.95rem, 3vw, 2.4rem);
+            }
+
+            .section-rule {
+                width: 76px;
+                height: 4px;
+                margin-top: 12px;
+                border-radius: 999px;
+                background: var(--accent);
+            }
+
+            .section-intro {
+                max-width: none;
+                width: 100%;
+                color: var(--text);
+            }
+
+            .grid-3,
+            .project-grid,
+            .data-grid {
+                display: grid;
+                gap: 18px;
+            }
+
+            .grid-3,
+            .data-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .project-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                margin-top: 18px;
+            }
+
+            .dual-grid {
+                display: grid;
+                grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+                gap: 18px;
+                align-items: start;
+            }
+
+            .card {
+                padding: 22px 24px;
+                border-radius: var(--radius-md);
+                background: var(--paper-muted);
+            }
+
+            .card h3,
+            .figure-card h3,
+            .project-card h3 {
+                margin-bottom: 10px;
+                font-size: 1.35rem;
+            }
+
+            .figure-stack {
+                display: grid;
+                gap: 18px;
+            }
+
+            .figure-card {
+                overflow: hidden;
+                border-radius: var(--radius-md);
+                background: var(--paper-muted);
+            }
+
+            .figure-card img {
+                width: 100%;
+                height: auto;
+            }
+
+            .figure-copy {
+                padding: 18px 20px 0;
+            }
+
+            .figure-copy p:last-child {
+                margin-bottom: 0;
+            }
+
+            .figure-card figcaption {
+                padding: 18px 20px 20px;
+            }
+
+            .project-card {
+                overflow: hidden;
+                border-radius: var(--radius-md);
+                background: var(--paper-muted);
+            }
+
+            .project-card img {
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                object-fit: cover;
+            }
+
+            .project-card-body {
+                padding: 16px 18px 18px;
+            }
+
+            .funding-list {
+                display: grid;
+                gap: 0;
+                overflow: hidden;
+                border: 1px solid var(--border);
+                border-radius: var(--radius-md);
+                background: var(--paper-muted);
+                box-shadow: 0 14px 36px rgba(31, 45, 61, 0.05);
+            }
+
+            .funding-item {
+                padding: 14px 18px;
+                border: 0;
+                border-top: 1px solid var(--border);
+                border-left: 0;
+                border-radius: 0;
+                background: transparent;
+                box-shadow: none;
+            }
+
+            .funding-item:first-child {
+                border-top: 0;
+            }
+
+            .people-card {
+                background: var(--paper-muted);
+            }
+
+            .personal-card {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 18px;
+                align-items: start;
+            }
+
+            .personal-card img {
+                width: 100%;
+                border-radius: 18px;
+            }
+
+            .footer {
+                margin-top: 36px;
+                padding-top: 18px;
+                border-top: 1px solid var(--border);
+                color: var(--muted);
+                font-size: 0.96rem;
+                text-align: center;
+            }
+
+            @media (max-width: 1120px) {
+                .layout {
+                    grid-template-columns: 280px minmax(0, 1fr);
+                }
+
+                .grid-3,
+                .project-grid,
+                .data-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+            }
+
+            @media (max-width: 920px) {
+                .layout,
+                .dual-grid,
+                .personal-card {
+                    grid-template-columns: 1fr;
+                }
+
+                .sidebar-inner {
+                    position: static;
+                }
+
+                .topbar {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                .quick-links {
+                    justify-content: flex-start;
+                }
+            }
+
+            @media (max-width: 680px) {
+                .page-shell {
+                    width: min(1240px, calc(100% - 18px));
+                    margin: 18px auto;
+                }
+
+                .main-content,
+                .sidebar {
+                    padding: 24px 18px;
+                }
+
+                .grid-3,
+                .project-grid,
+                .data-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .hero-card,
+                .card,
+                .figure-card figcaption,
+                .funding-item {
+                    padding-left: 18px;
+                    padding-right: 18px;
+                }
+
+                .hero-card {
+                    padding-top: 20px;
+                    padding-bottom: 20px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page-shell">
+            <div class="layout">
+                <aside class="sidebar">
+                    <div class="sidebar-inner">
+                        <div class="profile-photo">
+                            <img src="images/darren_7.jpg" alt="Portrait of Prof. Darren Cosker">
+                        </div>
+
+                        <h1>Prof. Darren Cosker</h1>
+
+                        <div class="role-list">
+                            <p><strong>Principal Scientist Manager (Director)</strong> @ Microsoft</p>
+                            <p><strong>Professor</strong> @ University of Bath</p>
+                            <p><strong>Royal Society Industry Fellow</strong></p>
+                        </div>
+
+                        <div class="sidebar-meta">
+                            <p><a href="https://scholar.google.com.sg/citations?hl=en&amp;user=n0rYM4kAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Google Scholar Page</a></p>
+                            <p><strong>Contact:</strong> <a href="https://www.linkedin.com/in/darren-cosker-61271413/">LinkedIn</a> or <a href="https://twitter.com/dopomoc">X-Twitter</a></p>
+                        </div>
+
+                        <div class="sidebar-link-list">
+                            <a class="sidebar-link" href="mailto:darrencosker@hotmail.com">darrencosker@hotmail.com</a>
+                            <a class="sidebar-link" href="#personal">Personal</a>
+                        </div>
+
+                        <nav class="section-nav" aria-label="Page sections">
+                            <h2>Navigate</h2>
+                            <ul>
+                                <li><a href="#top">Overview</a></li>
+                                <li><a href="#leadership">Leadership</a></li>
+                                <li><a href="#commercial">Previous Product Impact</a></li>
+                                <li><a href="#areas">Previous Research Impact</a></li>
+                                <li><a href="#funding">Funding</a></li>
+                                <li><a href="#datasets">Data</a></li>
+                                <li><a href="#team">Alumni</a></li>
+                                <li><a href="#personal">Personal</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </aside>
+
+                <main class="main-content" id="top">
+                    <div class="topbar">
+                        <div class="socials" aria-label="Profile links">
+                            <a href="http://www.camera.ac.uk" aria-label="CAMERA"><img src="images/CAMERA_C_logo.jpg" alt="CAMERA"></a>
+                            <a href="https://github.com/dopomoc" aria-label="GitHub"><img src="images/github_2.png" alt="GitHub"></a>
+                            <a href="https://twitter.com/dopomoc" aria-label="X"><img src="images/twitter.png" alt="X"></a>
+                            <a href="https://www.linkedin.com/in/darren-cosker-61271413?trk=hp-identity-name" aria-label="LinkedIn"><img src="images/linkedin.png" alt="LinkedIn"></a>
+                        </div>
+                    </div>
+
+                    <header class="hero">
+                        <div class="hero-card">
+                            <p>I am a <strong>Principal Scientist Manager (Director)</strong> at <strong>Microsoft</strong>, based in Cambridge (UK), where I currently lead work on <strong>post-training, multimodal conversational AI, evaluation systems, and meeting intelligence</strong> for <strong>Microsoft Teams</strong>. Increasingly, this work also touches <strong>reinforcement learning-style optimization</strong>, feedback-driven improvement, and the practical challenges of making agentic systems useful in real products.</p>
+
+                            <p>Before this, at <strong>Microsoft Mesh and Mixed Reality</strong>, I founded and led the <strong>Motion Lab</strong> team, working on real-time understanding and generation of human motion for remote communication in <strong>2D and Mixed Reality</strong>. Our work contributed to shipped experiences across <strong>Teams</strong>, <strong>Microsoft Mesh</strong>, and Azure-connected services, including audio-driven avatars, face tracking, body pose estimation, and technologies for more compelling presence in immersive communication.</p>
+
+                            <p>Up to 2021 I was a full-time <strong>Professor</strong> of Computer Science at the University of Bath, where I joined as a Royal Academy of Engineering / EPSRC Research Fellow in 2007 and where I still hold a part-time position. In 2015 I <strong>founded</strong> and became Director of the <strong>Centre for the Analysis of Motion, Entertainment Research and Applications (CAMERA)</strong>, building it from an initial vision into a 50+ person centre with major facilities, industrial partnerships, a strong route-to-impact model, and over <strong>&pound;20m</strong> in funding and partner contributions, before helping secure the <strong>&pound;45m+</strong> MyWorld investment in the South West of the UK.</p>
+
+                            <p>In my career so far, my interests have spanned <strong>computer vision, graphics, generative AI, multimodal modelling, reinforcement learning, and animation</strong> science and engineering applied to problems in <strong>Mixed Reality</strong>, <strong>digital humans and avatars</strong>, <strong>real-time communication</strong>, <strong>motion capture</strong>, <strong>video game animation</strong>, <strong>visual effects</strong>, and <strong>biomechanics</strong>.</p>
+
+                            <div class="hero-tags" aria-label="Core themes">
+                                <span class="tag">Multimodal AI</span>
+                                <span class="tag">Post-Training</span>
+                                <span class="tag">Real-Time Communication</span>
+                                <span class="tag">Digital Humans</span>
+                                <span class="tag">Computer Vision</span>
+                            </div>
+                        </div>
+                    </header>
+
+                    <section class="section" id="leadership">
+                        <div class="section-header">
+                            <div>
+                                <h2>Leadership and AI Delivery</h2>
+                                <div class="section-rule"></div>
+                            </div>
+                        </div>
+
+                        <article class="card">
+                            <p>A major part of my work today is not just creating new models or algorithms, but <strong>building the environment in which AI can be delivered well</strong>: defining product strategy, establishing teams, mentoring scientists and engineers, creating evaluation and experimentation workflows, and helping organizations move from prototypes to robust customer-facing systems.</p>
+
+                            <p>In Teams, this has meant helping drive the shift toward <strong>multimodal agents, post-trained AI systems, and proactive collaboration experiences</strong>, setting technical direction for conversational AI, and building the foundations for synthetic data generation, model evaluation, and live testing using human and AI feedback.</p>
+
+                            <p>The same leadership pattern was central to <strong>CAMERA</strong>. Founding CAMERA was not simply a research exercise: it required creating the vision, bringing together academic and industrial partners, raising substantial funding, hiring and growing an interdisciplinary team, building studios and technical infrastructure, and turning the centre into something that delivered both strong research and real-world impact. That remains one of the clearest examples of the kind of institution-building and long-horizon technical leadership I most enjoy.</p>
+
+                            <p>It has also pulled my work further toward <strong>reinforcement learning</strong>, <strong>post-training</strong>, and the broader question of how modern AI systems become reliably useful once they leave the demo stage and enter products that people use every day. I am especially interested in <strong>real-time communication</strong> settings, where models must work under latency, context, and interaction constraints, and in <strong>proactive agents</strong> that can help move collaboration forward rather than only reacting to a prompt.</p>
+                        </article>
+                    </section>
+
+                    <section class="section" id="commercial">
+                        <div class="section-header">
+                            <div>
+                                <h2>Previous Product Impact: From Multimodal AI to Immersive Experiences</h2>
+                                <div class="section-rule"></div>
+                            </div>
+                        </div>
+
+                        <article class="card">
+                            <p>The examples below reflect <strong>previous product work</strong> I have been fortunate to ship into the hands of millions of customers through <strong>Microsoft Teams</strong>, <strong>Microsoft Mesh</strong>, and Azure-connected services. More recently this has included <strong>multimodal conversational AI</strong>, <strong>post-training strategy</strong>, <strong>agent systems</strong>, and the tooling required to evaluate and improve these systems in live product settings.</p>
+
+                            <p>Within Teams, this includes work around collaborative AI experiences such as <strong>Facilitator</strong>, a <strong>chat-based agent experience</strong> aimed at helping people keep meetings and collaboration on track through structured assistance, follow-up, and shared context.</p>
+
+                            <p>At <strong>Microsoft Teams</strong>, the product impact increasingly comes from turning advances in AI into tools that improve how people communicate and coordinate. That spans meeting intelligence, multimodal interaction, and new agentic behaviours that support real-time collaboration.</p>
+                        </article>
+
+                        <figure class="figure-card" style="margin-top: 18px;">
+                            <div class="figure-copy">
+                                <h3>Microsoft Mesh</h3>
+                                <p>I established the Motion Lab team, bringing together expertise in computer vision, generative AI, graphics, and animation to solve problems in real-time human understanding. This included shipping <strong>live audio-driven avatars</strong>, <strong>real-time face tracking</strong>, and technologies for <strong>full-body reconstruction from sparse headset-based signals</strong> for devices such as HoloLens 2 and Meta Quest.</p>
+                            </div>
+                            <img src="images/microsoft_1.jpg" alt="Microsoft Mesh and Teams">
+                            <figcaption>Microsoft Mesh enables meetings in 2D through Teams and in immersive 3D spaces through VR. My work across Mesh and Teams has focused on the AI systems that support presence, communication, avatar control, meeting intelligence, and richer collaborative experiences.</figcaption>
+                        </figure>
+
+                        <figure class="figure-card" style="margin-top: 18px;">
+                            <div class="figure-copy">
+                                <h3>CAMERA</h3>
+                                <p>At <a href="http://www.camera.ac.uk"><strong>CAMERA</strong></a> I created a multi-disciplinary research and production environment with three themes converging on human perception, analysis, and synthesis: entertainment, human performance enhancement, and health and rehabilitation. Each theme was partnered with industry, giving us real routes to impact and allowing us to translate research into tools, studios, and delivered projects.</p>
+                            </div>
+                            <img src="images/camera_1.jpg" alt="CAMERA themes and studio">
+                            <figcaption>As Director of CAMERA, I built research themes, partnerships, teams, and studio capability around motion capture, photogrammetry, digital humans, and AI for entertainment, sport, and health applications.</figcaption>
+                        </figure>
+
+                        <p class="section-intro" style="margin-top: 18px;">At CAMERA I also created a framework for turning research into production tools with a team of engineers, deploying these in our studio, and delivering projects to clients that used the technology in practice. This helped ship a number of <strong>video games and award-winning immersive experiences</strong>. Below is a small snapshot of products and experiences I have been fortunate enough to contribute to.</p>
+
+                        <div class="project-grid">
+                            <article class="project-card">
+                                <img src="images/Aardman.jpg" alt="11:11 Memories Retold">
+                                <div class="project-card-body">
+                                    <h3>11:11 Memories Retold</h3>
+                                    <p>With Aardman and Bandai Namco (<strong>BAFTA nominated</strong>). We delivered motion capture for the video game at the CAMERA studio.</p>
+                                </div>
+                            </article>
+
+                            <article class="project-card">
+                                <img src="images/BBC.jpg" alt="Is Anna OK?">
+                                <div class="project-card-body">
+                                    <h3>Is Anna OK?</h3>
+                                    <p>With BBC and Aardman. An immersive experience delivered with our in-house facial rigging, animation, and motion capture solutions.</p>
+                                </div>
+                            </article>
+
+                            <article class="project-card">
+                                <img src="images/Cosmos.jpg" alt="Cosmos Within Us">
+                                <div class="project-card-body">
+                                    <h3>Cosmos Within Us</h3>
+                                    <p>With Satore Studios (<strong>Cannes Lion Winner</strong>). We built digital doubles for performers and animated them using our in-house tools.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="section" id="areas">
+                        <div class="section-header">
+                            <div>
+                                <h2>Previous Research Impact: From Digital Humans to Biomechanics and Human Perception</h2>
+                                <div class="section-rule"></div>
+                            </div>
+                        </div>
+
+                        <p class="section-intro">The research below reflects <strong>previous work</strong> spanning digital humans, motion capture of faces, bodies and animals, animation, computer vision, biomechanics, and human perception. A central theme has always been <strong>motion</strong> - understanding it, measuring it, generating it, and building systems that use it well. More recently, this work expanded into <strong>multimodal AI systems</strong>, <strong>synthetic data</strong>, <strong>evaluation</strong>, <strong>foundation-model adaptation</strong>, <strong>reinforcement learning</strong>, and <strong>proactive agents</strong> for communication and immersive experiences. A list of publications can be found on my <a href="https://scholar.google.com.sg/citations?hl=en&amp;user=n0rYM4kAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Google Scholar page</a>.</p>
+
+                        <div class="figure-stack" style="margin-top: 18px;">
+                            <figure class="figure-card">
+                                <img src="images/performance_cap_1.jpg" alt="Facial performance capture and animation">
+                                <figcaption><strong>Facial Performance Capture and Animation</strong>. This spans early 4D facial capture, monocular facial capture, and performance retargeting from motion capture. We built end-to-end pipelines for rigged digital facial models, automated performance transfer, and dynamic face modelling. The D3DFACS dataset later became one of the foundations of the FLAME model from Max Planck.</figcaption>
+                            </figure>
+
+                            <figure class="figure-card">
+                                <img src="images/generative_1.jpg" alt="Generative models of shape and motion">
+                                <figcaption><strong>Generative Models of Shape and Motion</strong>. My work has touched several areas of generative AI, from early speech-driven facial animation during my PhD through to recent personalised animation and multimodal avatar work. Today, this broader theme also connects to product-facing work on multimodal AI, post-training, and systems that combine speech, vision, and interaction signals to drive useful behaviour in real products.</figcaption>
+                            </figure>
+
+                            <figure class="figure-card">
+                                <img src="images/synthetic_1.jpg" alt="Synthetic data for AI and computer vision">
+                                <figcaption><strong>Synthetic Data for AI and Computer Vision</strong>. Computer graphics can be used to render realistic images and labels for training AI systems. We have applied these ideas across pose estimation, digital humans, and animal motion, and the same principles now extend naturally to modern multimodal systems where data generation, evaluation, and feedback loops are central to product quality.</figcaption>
+                            </figure>
+
+                            <figure class="figure-card">
+                                <img src="images/digital_humans_avatars_1.jpg" alt="Digital humans and avatars">
+                                <figcaption><strong>Digital Humans and Avatars: Animation, Embodiment and Perception</strong>. In CAMERA we created pipelines for digital humans that could be used for video games, VR research, and immersive experiences. At Microsoft, related ideas continue in more product-facing form through avatars, presence technologies, and systems for embodied communication in Teams and Mesh.</figcaption>
+                            </figure>
+
+                            <figure class="figure-card">
+                                <img src="images/biomechanics_1.jpg" alt="Markerless motion capture and analysis for biomechanics">
+                                <figcaption><strong>Markerless Motion Capture and Analysis for Biomechanics</strong>. One of the core motivations of CAMERA was to apply state-of-the-art computer vision and AI to biomechanics and elite sport. We worked closely with coaches and athletes, including the British Skeleton team, to create markerless systems that could provide useful biomechanical signals in real training environments.</figcaption>
+                            </figure>
+
+                            <figure class="figure-card">
+                                <img src="images/human_motion_ego_1.jpg" alt="Human pose estimation from egocentric cameras and head-mounted displays">
+                                <figcaption><strong>Human Pose Estimation from Egocentric Cameras and HMDs</strong>. At Microsoft, we have explored 3D human pose estimation from head-mounted devices and egocentric viewpoints, including work that supports avatar embodiment and full-body understanding in immersive products. These technologies are central to convincing presence experiences in mixed reality.</figcaption>
+                            </figure>
+                        </div>
+                    </section>
+
+                    <section class="section" id="funding">
+                        <div class="section-header">
+                            <div>
+                                <h2>Research Funding and Awards</h2>
+                                <div class="section-rule"></div>
+                            </div>
+                        </div>
+
+                        <p class="section-intro">As a Professor, one of the core activities in building ambitious research programmes is funding. Below is a selection of the major awards that supported large-scale centres such as CAMERA as well as more targeted projects in AI, computer vision, digital humans, performance capture, and perception.</p>
+
+                        <div class="funding-list" style="margin-top: 18px;">
+                            <div class="funding-item"><strong>2021-2026:</strong> MyWorld (~&pound;45m FEC). <strong>UKRI</strong> (PI, University of Bath)</div>
+                            <div class="funding-item"><strong>2020-2025:</strong> CAMERA 2.0 - Centre for the Analysis of Motion, Entertainment Research and Applications (&pound;4,151,614 FEC). <strong>EPSRC</strong></div>
+                            <div class="funding-item"><strong>2019-2021:</strong> CAMERA Motion Capture Innovation Studio (&pound;901,391). <strong>Horizon 2020</strong></div>
+                            <div class="funding-item"><strong>2019-2022:</strong> A Tool to Reveal Individual Differences in Facial Perception (&pound;402,113). <strong>Medical Research Council</strong></div>
+                            <div class="funding-item"><strong>2018-2020:</strong> Rheumatoid Arthritis Flare Profiler (&pound;165,126; total project value &pound;663,290). <strong>Innovate UK</strong></div>
+                            <div class="funding-item"><strong>2018-2022:</strong> Bristol and Bath Creative Cluster (~&pound;4m). <strong>AHRC</strong></div>
+                            <div class="funding-item"><strong>2017-2019:</strong> DOVE: Deformable Objects for Virtual Environments (&pound;128,746; total project value &pound;562,559 FEC). <strong>Innovate UK</strong></div>
+                            <div class="funding-item"><strong>2016-2018:</strong> HARPC: HMC for Augmented Reality Performance Capture (&pound;119,025; total project value &pound;517,616 FEC). <strong>Innovate UK</strong></div>
+                            <div class="funding-item"><strong>2015-2020:</strong> CAMERA (&pound;4,998,728 FEC; ~&pound;5m additional partner contributions). <strong>EPSRC/AHRC</strong></div>
+                            <div class="funding-item"><strong>2012-2016:</strong> Next Generation Facial Capture and Animation (&pound;100,887 FEC). <strong>Royal Society Industry Fellowship</strong></div>
+                            <div class="funding-item"><strong>2007-2012:</strong> Exploiting 4D Data for Creating Next Generation Facial Modelling and Animation Techniques (&pound;460,640 FEC). <strong>Royal Academy of Engineering Research Fellowship</strong></div>
+                        </div>
+                    </section>
+
+                    <section class="section" id="datasets">
+                        <div class="section-header">
+                            <div>
+                                <h2>Public Data</h2>
+                                <div class="section-rule"></div>
+                            </div>
+                        </div>
+
+                        <div class="data-grid">
+                            <article class="card">
+                                <h3>RGBD-Dog</h3>
+                                <p>RGBD-Dog contains motion capture and multiview RGB and RGBD data for dogs performing different actions. You can get the data, code to view it, and the CVPR 2020 paper from our <a href="https://github.com/CAMERA-Bath/RGBD-Dog">GitHub page</a>.</p>
+                            </article>
+
+                            <article class="card">
+                                <h3>D3DFACS</h3>
+                                <p>D3DFACS contains over 500 FACS-coded dynamic 3D sequences from 10 individuals, including meshes, stereo UV maps, colour images, and calibration files. More information is available in our ICCV 2011 paper <a href="ICCV_final_2011.pdf">A FACS Valid 3D Dynamic Action Unit Database with Applications to 3D Dynamic Morphable Facial Modelling</a> and on the <a href="https://vision.cs.bath.ac.uk/facedata">dataset website</a>.</p>
+                            </article>
+
+                            <article class="card">
+                                <h3>Shadow Removal</h3>
+                                <p>Shadow Removal Ground Truth and Evaluation provides a benchmark and dataset for single-image shadow removal, enabling open quantitative comparison across a challenging range of cases. The evaluation website is available <a href="http://www.cs.bath.ac.uk/%7Ehg299/shadow_eval/">here</a>.</p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="section" id="team">
+                        <div class="section-header">
+                            <div>
+                                <h2>Alumni (University)</h2>
+                                <div class="section-rule"></div>
+                            </div>
+                        </div>
+
+                        <article class="card people-card">
+                            <p>At Microsoft I lead teams of talented scientists and engineers. As a Professor and former Director of CAMERA, I have also had the privilege of working with outstanding students, researchers, technical staff, and collaborators.</p>
+                            <p>Martin Parsons (CAMERA), Murray Evans (CAMERA), Yiguo Qiao (Living With/RUH/InnovateUK), Jack Saunders, George Fletcher, Jake Deane, Kyle Reed (Cubic Motion), Jose Serra (Digital Domain/ILM), Anamaria Ciucanu (MMU), Pedro Mendes, Shridhar Ravikumar (Amazon, Apple), Alastair Barber (The Foundry), Wenbin Li (Bath), Han Gong (Apple), Charalampos Koniaris (Disney Research), Daniel Beale, Sinan Mutlu (Framestore), Nicholas Swafford, Nadejda Roubtsova (CAMERA), Sinead Kearney (CAMERA), Maryam Naghizadeh, Catherine Taylor (Marshmallow Laser Feast).</p>
+                        </article>
+                    </section>
+
+                    <section class="section" id="personal">
+                        <div class="section-header">
+                            <div>
+                                <h2>Personal</h2>
+                                <div class="section-rule"></div>
+                            </div>
+                        </div>
+
+                        <article class="card personal-card">
+                            <div>
+                                <p>I love my work, but the number one thing in my life is my family. If anything, having a family motivates me even more in my work, giving me the desire to make sure we all have the best life. It also forces you to be efficient and productive with the time that you <strong>are</strong> working, and to appreciate the time you have together even more.</p>
+                            </div>
+                            <div>
+                                <img src="images/family_1.jpg" alt="Family">
+                            </div>
+                        </article>
+                    </section>
+
+                    <footer class="footer">
+                        <span>&copy; Darren Cosker. All rights reserved. </span>
+                        <span>Design updated from the original TEMPLATED foundation.</span>
+                    </footer>
+                </main>
+            </div>
+        </div>
+    </body>
+</html>
